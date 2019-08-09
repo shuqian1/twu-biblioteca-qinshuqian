@@ -14,8 +14,11 @@ public class BibliotecaService {
     static final String successfulMessageReturn = "Thank you for returning the book";
     static final String unsuccessfulMessageReturn = "That is not a valid book to return";
     static final String bookListInfo = "title  ||  author  ||  publicationYear";
+    static final String movieListInfo = "name  ||  year  ||  directo || ratingr";
 
     BookService bookService = new BookService();
+
+    MovieService movieService = new MovieService();
 
     public String printWelcomeMessage(){
         String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
@@ -27,13 +30,14 @@ public class BibliotecaService {
         ArrayList<String> menulist = new ArrayList<>();
         Menu listOfBooks = new Menu(1,"List of books");
         Menu quitMenu = new Menu(0,"quit");
-        Menu checkoutMenu = new Menu(2,"checkout");
-        Menu returnMenu = new Menu(3,"return");
+        Menu checkoutMenu = new Menu(2,"checkout book");
+        Menu returnMenu = new Menu(3,"return book");
         Menu movieMenu = new Menu(4,"List of Movies");
         menulist.add(quitMenu.toString());
         menulist.add(listOfBooks.toString());
         menulist.add(checkoutMenu.toString());
         menulist.add(returnMenu.toString());
+        menulist.add(movieMenu.toString());
         return menulist;
     }
 
@@ -64,6 +68,11 @@ public class BibliotecaService {
                 printMenuList();
                 handleMenu(handleSelect());
                 break;
+            case 4:
+                System.out.println(movieListInfo);
+                movieService.showMovies().forEach(System.out::println);
+                printMenuList();
+                handleMenu(handleSelect());
             default:
                 System.out.println(invalidMenuMessage);
                 printMenuList();
