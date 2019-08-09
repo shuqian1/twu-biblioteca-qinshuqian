@@ -29,6 +29,7 @@ public class BibliotecaService {
         Menu quitMenu = new Menu(0,"quit");
         Menu checkoutMenu = new Menu(2,"checkout");
         Menu returnMenu = new Menu(3,"return");
+        Menu movieMenu = new Menu(4,"List of Movies");
         menulist.add(quitMenu.toString());
         menulist.add(listOfBooks.toString());
         menulist.add(checkoutMenu.toString());

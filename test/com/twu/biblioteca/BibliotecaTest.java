@@ -2,8 +2,10 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Menu;
+import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.service.BibliotecaService;
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.MovieService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,6 +108,17 @@ public class BibliotecaTest {
         BibliotecaService bibliotecaService = new BibliotecaService();
         assertThat(bibliotecaService.handleReturn(wrongBookName1),equalTo("That is not a valid book to return"));
         assertThat(bibliotecaService.handleReturn(wrongBookName2),equalTo("That is not a valid book to return"));
+    }
+
+    @Test
+    public void shouldShowMovies(){
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Roman Holiday","1953","Willi Wyler",1));
+        movies.add(new Movie("Forrester Gump","1994","Robert Lee Zemeckis",2));
+        movies.add(new Movie("Titanic","1997","James Cameron",4));
+        ArrayList movieList = (ArrayList) movies.stream().map(Movie::toString).collect(Collectors.toList());
+        MovieService movieService = new MovieService();
+        assertThat(movieService.showMovies(),equalTo(movieList));
     }
 
 }
