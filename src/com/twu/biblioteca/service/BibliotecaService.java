@@ -13,6 +13,7 @@ public class BibliotecaService {
     static final String unsuccessfulMessageCheckout = "Sorry,that book is not available";
     static final String successfulMessageReturn = "Thank you for returning the book";
     static final String unsuccessfulMessageReturn = "That is not a valid book to return";
+    static final String bookListInfo = "title  ||  author  ||  publicationYear";
 
     BookService bookService = new BookService();
 
@@ -37,6 +38,7 @@ public class BibliotecaService {
 
     public void printMenuList(){
         showMenuList().forEach(System.out::println);
+        System.out.println("please input menuId:");
     }
 
     public void handleMenu(int selectId){
@@ -44,16 +46,19 @@ public class BibliotecaService {
             case 0:
                 break;
             case 1:
+                System.out.println(bookListInfo);
                 bookService.showAllBooks().forEach(System.out::println);
                 printMenuList();
                 handleMenu(handleSelect());
                 break;
             case 2:
+                System.out.println("please input book title:");
                 System.out.println(handleCheckout(handleInputString()));
                 printMenuList();
                 handleMenu(handleSelect());
                 break;
             case 3:
+                System.out.println("please input book title:");
                 System.out.println(handleReturn(handleInputString()));
                 printMenuList();
                 handleMenu(handleSelect());

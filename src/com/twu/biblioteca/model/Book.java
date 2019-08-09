@@ -57,7 +57,7 @@ public class Book {
     }
 
     public String getInfo(){
-        return title + "  " + author + "  " + publicationYear;
+        return title + " || " + author + " || " + publicationYear;
     }
 }
 
