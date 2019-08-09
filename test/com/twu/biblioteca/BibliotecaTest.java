@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Menu;
 import com.twu.biblioteca.service.BibliotecaService;
 import com.twu.biblioteca.service.BookService;
 import org.junit.After;
@@ -49,4 +50,17 @@ public class BibliotecaTest {
         List actual = bookService.showAllBooks();
         assertThat(actual,equalTo(books));
     }
+
+    @Test
+    public void shouldShowMenuList(){
+        ArrayList<Menu> menuList = new ArrayList<>();
+        Menu menu = new Menu(1,"List of books");
+        menuList.add(menu);
+
+        assertThat("",equalTo(menuList.stream().map(Menu::toString).collect(Collectors.toList())));
+    }
+
+
+
+
 }
