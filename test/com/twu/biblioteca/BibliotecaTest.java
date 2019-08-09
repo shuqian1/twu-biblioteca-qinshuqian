@@ -83,7 +83,6 @@ public class BibliotecaTest {
         String rightBookName = "Flipped";
         BibliotecaService bibliotecaService = new BibliotecaService();
         assertThat( bibliotecaService.handleCheckout(rightBookName),equalTo("Thank you!Enjoy the book"));
-
     }
 
     @Test
@@ -119,6 +118,20 @@ public class BibliotecaTest {
         ArrayList movieList = (ArrayList) movies.stream().map(Movie::toString).collect(Collectors.toList());
         MovieService movieService = new MovieService();
         assertThat(movieService.showMovies(),equalTo(movieList));
+    }
+
+    @Test
+    public void shouldShowSuccessfulMessageOnCheckoutMovie(){
+        String rightMovieName = "Roman Holiday";
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        assertThat( bibliotecaService.handleCheckoutMovie(rightMovieName),equalTo("Thank you!Enjoy the movie"));
+    }
+
+    @Test
+    public void shouldShowUnsuccessfulMessageOnCheckoutMovie(){
+        String wrongMovieName = "ff";
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        assertThat(bibliotecaService.handleCheckout(wrongMovieName),equalTo("Sorry,that movie is not available"));
     }
 
 }

@@ -1,20 +1,22 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Menu;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class BibliotecaService {
 
     static final String invalidMenuMessage = "Please select a valid option!";
-    static final String successfulMessageCheckout = "Thank you!Enjoy the book";
-    static final String unsuccessfulMessageCheckout = "Sorry,that book is not available";
+    static final String errorInput = "Error input!";
+    static final String successfulBookCheckout = "Thank you!Enjoy the book";
+    static final String unsuccessfulBookCheckout = "Sorry,that book is not available";
     static final String successfulMessageReturn = "Thank you for returning the book";
     static final String unsuccessfulMessageReturn = "That is not a valid book to return";
     static final String bookListInfo = "title  ||  author  ||  publicationYear";
     static final String movieListInfo = "name  ||  year  ||  directo || ratingr";
+    static final String successfulMovieCheckout = "Thank you!Enjoy the movie";
+    static final String unsuccessfulMovieCheckout = "That is not a valid book to return";
+
 
     BookService bookService = new BookService();
 
@@ -24,7 +26,6 @@ public class BibliotecaService {
         String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
         return welcomeMessage;
     }
-
 
     public ArrayList<String> showMenuList(){
         ArrayList<String> menulist = new ArrayList<>();
@@ -83,9 +84,9 @@ public class BibliotecaService {
 
     public String handleCheckout(String s){
         if(bookService.checkout(s)) {
-            return successfulMessageCheckout;
+            return successfulBookCheckout;
         } else{
-            return unsuccessfulMessageCheckout;
+            return unsuccessfulBookCheckout;
         }
     }
 
@@ -97,13 +98,17 @@ public class BibliotecaService {
         }
     }
 
+    public String handleCheckoutMovie(String s){
+        return "";
+    }
+
     public int handleSelect(){
         int selectId = -1;
         try {
             Scanner scanner = new Scanner(System.in);
             selectId = scanner.nextInt();
         }catch (Exception e){
-            System.out.println(invalidMenuMessage);
+            System.out.println(errorInput);
         }
         return selectId;
     }
@@ -114,7 +119,7 @@ public class BibliotecaService {
             Scanner scanner = new Scanner(System.in);
             s = scanner.nextLine();
         }catch (Exception e){
-            System.out.println(unsuccessfulMessageCheckout);
+            System.out.println(errorInput);
         }
         return s;
     }
