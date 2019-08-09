@@ -27,10 +27,16 @@ public class BibliotecaService {
         Menu listOfBooks = new Menu(1,"List of books");
         Menu quitMenu = new Menu(0,"quit");
         Menu checkoutMenu = new Menu(2,"checkout");
+        Menu returnMenu = new Menu(3,"return");
         menulist.add(quitMenu.toString());
         menulist.add(listOfBooks.toString());
         menulist.add(checkoutMenu.toString());
+        menulist.add(returnMenu.toString());
         return menulist;
+    }
+
+    public void printMenuList(){
+        showMenuList().forEach(System.out::println);
     }
 
     public void handleMenu(int selectId){
@@ -39,15 +45,22 @@ public class BibliotecaService {
                 break;
             case 1:
                 bookService.showAllBooks().forEach(System.out::println);
+                printMenuList();
                 handleMenu(handleSelect());
                 break;
             case 2:
-
                 System.out.println(handleCheckout(handleInputString()));
+                printMenuList();
+                handleMenu(handleSelect());
+                break;
+            case 3:
+                System.out.println(handleReturn(handleInputString()));
+                printMenuList();
                 handleMenu(handleSelect());
                 break;
             default:
                 System.out.println(invalidMenuMessage);
+                printMenuList();
                 handleMenu(handleSelect());
                 break;
         }
@@ -62,7 +75,11 @@ public class BibliotecaService {
     }
 
     public String handleReturn(String s){
-        return "";
+        if(bookService.returnBook(s)){
+            return successfulMessageReturn;
+        } else {
+            return unsuccessfulMessageReturn;
+        }
     }
 
     public int handleSelect(){
@@ -80,7 +97,7 @@ public class BibliotecaService {
         String s = "";
         try {
             Scanner scanner = new Scanner(System.in);
-            s = scanner.next();
+            s = scanner.nextLine();
         }catch (Exception e){
             System.out.println(unsuccessfulMessageCheckout);
         }

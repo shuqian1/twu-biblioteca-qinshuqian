@@ -11,7 +11,7 @@ public class BibliotecaApp {
 //        printWelcomeMessage
         System.out.println(bibliotecaService.printWelcomeMessage());
 
-        bibliotecaService.showMenuList().forEach(System.out::println);
+        bibliotecaService.printMenuList();
 
         int selectId = bibliotecaService.handleSelect();
         bibliotecaService.handleMenu(selectId);

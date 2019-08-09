@@ -104,8 +104,8 @@ public class BibliotecaTest {
         String wrongBookName1 = "aaa";
         String wrongBookName2 = "Flipped";
         BibliotecaService bibliotecaService = new BibliotecaService();
-        assertThat(bibliotecaService.handleReturn(wrongBookName1),equalTo("Thank you for returning the book"));
-        assertThat(bibliotecaService.handleReturn(wrongBookName2),equalTo("Thank you for returning the book"));
+        assertThat(bibliotecaService.handleReturn(wrongBookName1),equalTo("That is not a valid book to return"));
+        assertThat(bibliotecaService.handleReturn(wrongBookName2),equalTo("That is not a valid book to return"));
     }
 
 }
