@@ -12,6 +12,7 @@ public class BibliotecaApp {
         System.out.println(bibliotecaService.printWelcomeMessage());
 
         bibliotecaService.showMenuList().forEach(System.out::println);
+
         int selectId = bibliotecaService.handleSelect();
         bibliotecaService.handleMenu(selectId);
 //        bookService.showAllBooks().forEach(System.out::println);

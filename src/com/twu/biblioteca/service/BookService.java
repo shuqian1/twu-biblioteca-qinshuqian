@@ -26,6 +26,21 @@ public class BookService {
 
     }
 
+    public boolean checkout(String title) {
+        List<Book> books = findBookByTitle(title);
+        if(books.size() == 0){
+            return false;
+        } else {
+            Book book = books.get(0);
+            book.setCheckOut(true);
+            return true;
+        }
+    }
+
+    public List<Book> findBookByTitle(String title){
+        List<Book> books = bookArrayList.stream().filter(book -> book.getTitle().equals(title)).filter(book -> !book.isCheckOut()).collect(Collectors.toList());
+        return books;
+    }
 
 
 }

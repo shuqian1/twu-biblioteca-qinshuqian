@@ -24,8 +24,10 @@ public class BibliotecaService {
         ArrayList<String> menulist = new ArrayList<>();
         Menu listOfBooks = new Menu(1,"List of books");
         Menu quitMenu = new Menu(0,"quit");
+        Menu checkoutMenu = new Menu(2,"checkout");
         menulist.add(quitMenu.toString());
         menulist.add(listOfBooks.toString());
+        menulist.add(checkoutMenu.toString());
         return menulist;
     }
 
@@ -35,15 +37,26 @@ public class BibliotecaService {
                 break;
             case 1:
                 bookService.showAllBooks().forEach(System.out::println);
+                handleMenu(handleSelect());
+                break;
+            case 2:
+
+                System.out.println(handleCheckout(handleInputString()));
+                handleMenu(handleSelect());
                 break;
             default:
                 System.out.println(invalidMenuMessage);
+                handleMenu(handleSelect());
                 break;
         }
     }
 
-    public void handleCheckout(String s){
-
+    public String handleCheckout(String s){
+        if(bookService.checkout(s)) {
+            return successfulMessageCheckout;
+        } else{
+            return unsuccessfulMessageCheckout;
+        }
     }
 
     public int handleSelect(){

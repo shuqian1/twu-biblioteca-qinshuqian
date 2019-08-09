@@ -80,8 +80,7 @@ public class BibliotecaTest {
     public void shouldShowSuccessfulMessageOnCheckoutBook(){
         String rightBookName = "Flipped";
         BibliotecaService bibliotecaService = new BibliotecaService();
-        bibliotecaService.handleCheckout(rightBookName);
-        assertThat(outContent.toString(),equalTo("Thank you!Enjoy the book\r\n"));
+        assertThat( bibliotecaService.handleCheckout(rightBookName),equalTo("Thank you!Enjoy the book"));
 
     }
 
@@ -89,8 +88,7 @@ public class BibliotecaTest {
     public void shouldShowUnsuccessfulMessageOnCheckoutBook(){
         String wrongBookName = "abc";
         BibliotecaService bibliotecaService = new BibliotecaService();
-        bibliotecaService.handleCheckout(wrongBookName);
-        assertThat(outContent.toString(),equalTo("Sorry,that book is not available"));
+        assertThat(bibliotecaService.handleCheckout(wrongBookName),equalTo("Sorry,that book is not available"));
     }
 
 
