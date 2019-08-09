@@ -164,9 +164,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-165" />
-    <option name="y" value="186" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-86" />
+    <option name="y" value="72" />
     <option name="width" value="1944" />
     <option name="height" value="1044" />
   </component>
@@ -253,7 +253,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BibliotecaTest.shouldShowInvalidMessage">
+  <component name="RunManager" selected="Application.BibliotecaApp">
     <configuration name="BibliotecaApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaApp" />
       <module name="biblioteca" />
@@ -267,7 +267,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BibliotecaTest.shouldPrintWelcomeMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BibliotecaTest.shouldQuit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="biblioteca" />
       <extension name="coverage">
         <pattern>
@@ -277,7 +277,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaTest" />
-      <option name="METHOD_NAME" value="shouldPrintWelcomeMessage" />
+      <option name="METHOD_NAME" value="shouldQuit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -333,11 +333,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BibliotecaTest.shouldShowInvalidMessage" />
         <item itemvalue="Application.BibliotecaApp" />
+        <item itemvalue="JUnit.BibliotecaTest.shouldQuit" />
+        <item itemvalue="JUnit.BibliotecaTest.shouldShowInvalidMessage" />
         <item itemvalue="JUnit.BibliotecaTest.shouldShowMenuList" />
         <item itemvalue="JUnit.BibliotecaTest.shouldShowAllBooks" />
-        <item itemvalue="JUnit.BibliotecaTest.shouldPrintWelcomeMessage" />
       </list>
     </recent_temporary>
   </component>

@@ -21,12 +21,16 @@ public class BibliotecaService {
     public ArrayList<String> showMenuList(){
         ArrayList<String> menulist = new ArrayList<>();
         Menu listOfBooks = new Menu(1,"List of books");
+        Menu quitMenu = new Menu(0,"quit");
+        menulist.add(quitMenu.toString());
         menulist.add(listOfBooks.toString());
         return menulist;
     }
 
     public void handleMenu(int selectId){
         switch (selectId){
+            case 0:
+                break;
             case 1:
                 bookService.showAllBooks().forEach(System.out::println);
                 break;
