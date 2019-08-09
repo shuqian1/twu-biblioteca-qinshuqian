@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.service.BibliotecaService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,6 +27,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldPrintWelcomeMessage(){
-        assertThat("",equalTo("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore"));
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        assertThat(bibliotecaService.printWelcomeMessage(),equalTo("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!"));
     }
 }
