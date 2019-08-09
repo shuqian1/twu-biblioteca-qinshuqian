@@ -64,8 +64,8 @@ public class BibliotecaTest {
     public void shouldShowInvalidMessage(){
         int selectId = 8;
         BibliotecaService bibliotecaService = new BibliotecaService();
-
-        assertThat("",equalTo("Please select a valid option!\r\n"));
+        bibliotecaService.handleMenu(selectId);
+        assertThat(outContent.toString(),equalTo("Please select a valid option!\r\n"));
     }
 
 

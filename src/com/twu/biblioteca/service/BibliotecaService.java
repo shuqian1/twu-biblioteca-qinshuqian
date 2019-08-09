@@ -31,7 +31,7 @@ public class BibliotecaService {
                 bookService.showAllBooks().forEach(System.out::println);
                 break;
             default:
-               
+                System.out.println(invalidMenuMessage);
                 break;
         }
     }
