@@ -92,5 +92,20 @@ public class BibliotecaTest {
     }
 
 
+    @Test
+    public void houldShowSuccessfulMessageOnReturn(){
+        String rightBookName = "The Catcher in the Rye";
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        assertThat(bibliotecaService.handleReturn(rightBookName),equalTo("Thank you for returning the book"));
+    }
+
+    @Test
+    public void shouldShowUnsuccessfulMessageOnReturn(){
+        String wrongBookName1 = "aaa";
+        String wrongBookName2 = "Flipped";
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        assertThat(bibliotecaService.handleReturn(wrongBookName1),equalTo("Thank you for returning the book"));
+        assertThat(bibliotecaService.handleReturn(wrongBookName2),equalTo("Thank you for returning the book"));
+    }
 
 }

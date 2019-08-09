@@ -11,6 +11,8 @@ public class BibliotecaService {
     static final String invalidMenuMessage = "Please select a valid option!";
     static final String successfulMessageCheckout = "Thank you!Enjoy the book";
     static final String unsuccessfulMessageCheckout = "Sorry,that book is not available";
+    static final String successfulMessageReturn = "Thank you for returning the book";
+    static final String unsuccessfulMessageReturn = "That is not a valid book to return";
 
     BookService bookService = new BookService();
 
@@ -57,6 +59,10 @@ public class BibliotecaService {
         } else{
             return unsuccessfulMessageCheckout;
         }
+    }
+
+    public String handleReturn(String s){
+        return "";
     }
 
     public int handleSelect(){
