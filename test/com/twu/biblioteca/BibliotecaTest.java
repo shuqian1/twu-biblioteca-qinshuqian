@@ -60,6 +60,14 @@ public class BibliotecaTest {
         assertThat(bibliotecaService.showMenuList(),equalTo(menuList.stream().map(Menu::toString).collect(Collectors.toList())));
     }
 
+    @Test
+    public void shouldShowInvalidMessage(){
+        int selectId = 8;
+        BibliotecaService bibliotecaService = new BibliotecaService();
+
+        assertThat("",equalTo("Please select a valid option!\r\n"));
+    }
+
 
 
 
