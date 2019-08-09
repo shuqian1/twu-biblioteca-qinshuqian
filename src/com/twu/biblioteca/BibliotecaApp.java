@@ -11,7 +11,8 @@ public class BibliotecaApp {
 //        printWelcomeMessage
         System.out.println(bibliotecaService.printWelcomeMessage());
 
-        bookService.showAllBooks().forEach(System.out::println);
+        bibliotecaService.showMenuList().forEach(System.out::println);
+//        bookService.showAllBooks().forEach(System.out::println);
 
     }
 }

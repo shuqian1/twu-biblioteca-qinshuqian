@@ -56,8 +56,8 @@ public class BibliotecaTest {
         ArrayList<Menu> menuList = new ArrayList<>();
         Menu menu = new Menu(1,"List of books");
         menuList.add(menu);
-
-        assertThat("",equalTo(menuList.stream().map(Menu::toString).collect(Collectors.toList())));
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        assertThat(bibliotecaService.showMenuList(),equalTo(menuList.stream().map(Menu::toString).collect(Collectors.toList())));
     }
 
 
