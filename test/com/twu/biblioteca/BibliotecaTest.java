@@ -68,6 +68,14 @@ public class BibliotecaTest {
         assertThat(outContent.toString(),equalTo("Please select a valid option!\r\n"));
     }
 
+    @Test
+    public void shouldQuit(){
+        int selectId = 0;
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        bibliotecaService.handleMenu(selectId);
+        assertThat(outContent.toString(),equalTo(""));
+    }
+
 
 
 
