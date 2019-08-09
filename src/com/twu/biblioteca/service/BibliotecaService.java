@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class BibliotecaService {
 
     static final String invalidMenuMessage = "Please select a valid option!";
+    static final String successfulMessageCheckout = "Thank you!Enjoy the book";
+    static final String unsuccessfulMessageCheckout = "Sorry,that book is not available";
 
     BookService bookService = new BookService();
 
@@ -40,6 +42,10 @@ public class BibliotecaService {
         }
     }
 
+    public void handleCheckout(String s){
+
+    }
+
     public int handleSelect(){
         int selectId = -1;
         try {
@@ -49,5 +55,16 @@ public class BibliotecaService {
             System.out.println(invalidMenuMessage);
         }
         return selectId;
+    }
+
+    public String handleInputString(){
+        String s = "";
+        try {
+            Scanner scanner = new Scanner(System.in);
+            s = scanner.next();
+        }catch (Exception e){
+            System.out.println(unsuccessfulMessageCheckout);
+        }
+        return s;
     }
 }

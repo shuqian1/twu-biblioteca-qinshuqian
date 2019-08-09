@@ -76,6 +76,22 @@ public class BibliotecaTest {
         assertThat(outContent.toString(),equalTo(""));
     }
 
+    @Test
+    public void shouldShowSuccessfulMessageOnCheckoutBook(){
+        String rightBookName = "Flipped";
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        bibliotecaService.handleCheckout(rightBookName);
+        assertThat(outContent.toString(),equalTo("Thank you!Enjoy the book\r\n"));
+
+    }
+
+    @Test
+    public void shouldShowUnsuccessfulMessageOnCheckoutBook(){
+        String wrongBookName = "abc";
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        bibliotecaService.handleCheckout(wrongBookName);
+        assertThat(outContent.toString(),equalTo("Sorry,that book is not available"));
+    }
 
 
 
