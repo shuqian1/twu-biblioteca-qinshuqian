@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.service.BibliotecaService;
+import com.twu.biblioteca.service.BookService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,8 @@ import java.io.PrintStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
@@ -41,7 +44,9 @@ public class BibliotecaTest {
         bookArrayList.add(new Book("Who Moved My Cheese","Johnson","1999-03-04"));
         bookArrayList.add(new Book("Flipped","Wendelin","2005-07-01"));
         bookArrayList.add(new Book("The Catcher in the Rye","Salinger","1991-05-01"));
-        ArrayList<Book> actual = new ArrayList();
-        assertThat(actual,equalTo(bookArrayList));
+        List<String> books = bookArrayList.stream().map(Book::getInfo).collect(Collectors.toList());
+        BookService bookService = new BookService();
+        List actual = bookService.showAllBooks();
+        assertThat(actual,equalTo(books));
     }
 }
