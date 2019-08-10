@@ -128,6 +128,11 @@ public class BibliotecaService {
                 printMenuList(user.getRole());
                 handleMenu(handleSelect(),user);
                 break;
+            case 7:
+                printUserInfo(user.getUserId());
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
+                break;
             default:
                 System.out.println(invalidMenuMessage);
                 printMenuList(user.getRole());
@@ -169,7 +174,8 @@ public class BibliotecaService {
     }
 
     public void printUserInfo(String id){
-        
+        User user = loginService.getInfoById(id);
+        System.out.println(user.toString());
     }
 
     public int handleSelect(){

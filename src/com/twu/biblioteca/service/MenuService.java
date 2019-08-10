@@ -16,6 +16,7 @@ public class MenuService {
             new Menu(4,"List of Movies",Role.Customer),
             new Menu(5,"Checkout Movie",Role.Customer),
             new Menu(6,"List of Checkout Books",Role.Librarian),
+            new Menu(7,"Show My Information",Role.Customer),
             new Menu(9,"Librarian Quit",Role.Librarian)));
 
     public List<String> getMenuByRole(Role role){
