@@ -168,6 +168,10 @@ public class BibliotecaService {
         }
     }
 
+    public void printUserInfo(String id){
+        
+    }
+
     public int handleSelect(){
         int selectId = -1;
         try {

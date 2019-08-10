@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.model.*;
 import com.twu.biblioteca.service.BibliotecaService;
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.LoginService;
 import com.twu.biblioteca.service.MovieService;
 import org.junit.After;
 import org.junit.Before;
@@ -131,6 +132,14 @@ public class BibliotecaTest {
         String wrongMovieName = "ff";
         BibliotecaService bibliotecaService = new BibliotecaService();
         assertThat(bibliotecaService.handleCheckoutMovie(wrongMovieName),equalTo("Sorry,that movie is not available"));
+    }
+
+    @Test
+    public void shouldReturnUserInfo(){
+        String userInfo = "c00-0001  ||  Bob  ||  bob@163.com  ||  13000000000";
+        BibliotecaService bibliotecaService = new BibliotecaService();
+        bibliotecaService.printUserInfo("c00-0001");
+        assertThat(outContent.toString(),equalTo(userInfo + "\r\n"));
     }
 
 }

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LoginService {
-    ArrayList<User> userList = new ArrayList<>(Arrays.asList(new User("c00-0001","Bob","123456", Role.Customer),
-            new User("c00-0002","Tom","123456",Role.Customer),
+    ArrayList<User> userList = new ArrayList<>(Arrays.asList(new User("c00-0001","Bob","123456", Role.Customer,"bob@163.com","13000000000"),
+            new User("c00-0002","Tom","123456",Role.Customer,"tom@163.com","13000000001"),
             new User("l00-0001","Alice","666666",Role.Librarian)));
 
     public boolean login(String id,String password){
