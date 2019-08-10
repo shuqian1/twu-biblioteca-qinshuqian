@@ -1,6 +1,10 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Menu;
+import com.twu.biblioteca.model.Role;
+import com.twu.biblioteca.model.User;
+
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,15 +20,24 @@ public class BibliotecaService {
     static final String movieListInfo = "name  ||  year  ||  directo || ratingr";
     static final String successfulMovieCheckout = "Thank you!Enjoy the movie";
     static final String unsuccessfulMovieCheckout = "Sorry,that movie is not available";
+    static final String loginFailMessage = "login failed";
+    static final String checkoutRecordInfo = "title  ||  userId  ||  userName";
 
 
     BookService bookService = new BookService();
 
     MovieService movieService = new MovieService();
 
+    LoginService loginService = new LoginService();
+
+    MenuService menuService = new MenuService();
+
+    BookCheckoutRecordService bookCheckoutRecordService = new BookCheckoutRecordService();
+
     public String printWelcomeMessage(){
         String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
-        return welcomeMessage;
+        String loginMessage = "Please login.Input your userId and password,separate it with blank lines.";
+        return welcomeMessage + "\r\n" + loginMessage;
     }
 
     public ArrayList<String> showMenuList(){
@@ -44,47 +57,81 @@ public class BibliotecaService {
         return menulist;
     }
 
-    public void printMenuList(){
-        showMenuList().forEach(System.out::println);
+    public void login(){
+        String id = "";
+        String password = "";
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            id = scanner.nextLine();
+            password = scanner.nextLine();
+
+        }catch (Exception e){
+            System.out.println(errorInput);
+        }
+//        success
+        if(loginService.login(id,password)){
+            User user = loginService.getInfoById(id);
+            printMenuList(user.getRole());
+            handleMenu(handleSelect(),user);
+        } else {
+//            fail
+            System.out.println(loginFailMessage);
+            login();
+        }
+    }
+
+    public void printMenuList(Role role){
+        menuService.getMenuByRole(role).forEach(System.out::println);
         System.out.println("please input menuId:");
     }
 
-    public void handleMenu(int selectId){
+    public void handleMenu(int selectId,User user){
         switch (selectId){
             case 0:
+                break;
+            case 9:
                 break;
             case 1:
                 System.out.println(bookListInfo);
                 bookService.showAllBooks().forEach(System.out::println);
-                printMenuList();
-                handleMenu(handleSelect());
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
                 break;
             case 2:
                 System.out.println("please input book's title:");
                 System.out.println(handleCheckout(handleInputString()));
-                printMenuList();
-                handleMenu(handleSelect());
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
                 break;
             case 3:
                 System.out.println("please input book's title:");
                 System.out.println(handleReturn(handleInputString()));
-                printMenuList();
-                handleMenu(handleSelect());
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
                 break;
             case 4:
                 System.out.println(movieListInfo);
                 movieService.showMovies().forEach(System.out::println);
-                printMenuList();
-                handleMenu(handleSelect());
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
                 break;
             case 5:
                 System.out.println("please input movie's name:");
                 System.out.println(handleCheckoutMovie(handleInputString()));
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
+                break;
+            case 6:
+                System.out.println(checkoutRecordInfo);
+                printCheckoutRecord();
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
                 break;
             default:
                 System.out.println(invalidMenuMessage);
-                printMenuList();
-                handleMenu(handleSelect());
+                printMenuList(user.getRole());
+                handleMenu(handleSelect(),user);
                 break;
         }
     }
@@ -110,6 +157,14 @@ public class BibliotecaService {
             return successfulMovieCheckout;
         } else {
             return unsuccessfulMovieCheckout;
+        }
+    }
+
+    public void printCheckoutRecord(){
+        ArrayList<ArrayList> records = bookCheckoutRecordService.getCheckoutRecord();
+        for (int i = 0;i<records.size();i++){
+            ArrayList record = records.get(i);
+            System.out.println(record.get(0) + "  ||  " + record.get(1) + "  ||  " + record.get(2));
         }
     }
 

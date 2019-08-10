@@ -11,10 +11,11 @@ public class BibliotecaApp {
 //        printWelcomeMessage
         System.out.println(bibliotecaService.printWelcomeMessage());
 
-        bibliotecaService.printMenuList();
+//        bibliotecaService.printMenuList();
+        bibliotecaService.login();
 
-        int selectId = bibliotecaService.handleSelect();
-        bibliotecaService.handleMenu(selectId);
+//        int selectId = bibliotecaService.handleSelect();
+//        bibliotecaService.handleMenu(selectId);
 //        bookService.showAllBooks().forEach(System.out::println);
 
     }

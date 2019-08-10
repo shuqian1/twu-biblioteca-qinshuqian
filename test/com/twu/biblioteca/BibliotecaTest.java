@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Menu;
-import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.*;
 import com.twu.biblioteca.service.BibliotecaService;
 import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.MovieService;
@@ -65,7 +63,8 @@ public class BibliotecaTest {
     public void shouldShowInvalidMessage(){
         int selectId = 8;
         BibliotecaService bibliotecaService = new BibliotecaService();
-        bibliotecaService.handleMenu(selectId);
+        User user = new User("c00-0001","Bob","123456", Role.Customer);
+        bibliotecaService.handleMenu(selectId,user);
         assertThat(outContent.toString(),equalTo("Please select a valid option!\r\n"));
     }
 
@@ -73,7 +72,8 @@ public class BibliotecaTest {
     public void shouldQuit(){
         int selectId = 0;
         BibliotecaService bibliotecaService = new BibliotecaService();
-        bibliotecaService.handleMenu(selectId);
+        User user = new User("c00-0001","Bob","123456", Role.Customer);
+        bibliotecaService.handleMenu(selectId,user);
         assertThat(outContent.toString(),equalTo(""));
     }
 
