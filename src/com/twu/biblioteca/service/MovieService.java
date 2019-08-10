@@ -17,4 +17,20 @@ public class MovieService {
         ArrayList<String> movieAvailable = (ArrayList<String>) movieList.stream().filter(movie -> !movie.isCheckOut()).map(Movie::toString).collect(Collectors.toList());
         return movieAvailable;
     }
+
+    public boolean checkout(String name){
+        List<Movie> movies = findByName(name);
+        if(movies.size() == 0){
+            return false;
+        } else {
+            Movie movie = movies.get(0);
+            movie.setCheckOut(true);
+            return true;
+        }
+    }
+
+    public List<Movie> findByName(String name){
+        List<Movie> movies =  movieList.stream().filter(movie -> movie.getName().equals(name)).filter(movie -> !movie.isCheckOut()).collect(Collectors.toList());
+        return movies;
+    }
 }

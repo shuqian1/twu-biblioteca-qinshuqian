@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -131,7 +130,7 @@ public class BibliotecaTest {
     public void shouldShowUnsuccessfulMessageOnCheckoutMovie(){
         String wrongMovieName = "ff";
         BibliotecaService bibliotecaService = new BibliotecaService();
-        assertThat(bibliotecaService.handleCheckout(wrongMovieName),equalTo("Sorry,that movie is not available"));
+        assertThat(bibliotecaService.handleCheckoutMovie(wrongMovieName),equalTo("Sorry,that movie is not available"));
     }
 
 }

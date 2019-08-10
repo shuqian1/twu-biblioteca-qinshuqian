@@ -15,7 +15,7 @@ public class BibliotecaService {
     static final String bookListInfo = "title  ||  author  ||  publicationYear";
     static final String movieListInfo = "name  ||  year  ||  directo || ratingr";
     static final String successfulMovieCheckout = "Thank you!Enjoy the movie";
-    static final String unsuccessfulMovieCheckout = "That is not a valid book to return";
+    static final String unsuccessfulMovieCheckout = "Sorry,that movie is not available";
 
 
     BookService bookService = new BookService();
@@ -34,11 +34,13 @@ public class BibliotecaService {
         Menu checkoutMenu = new Menu(2,"checkout book");
         Menu returnMenu = new Menu(3,"return book");
         Menu movieMenu = new Menu(4,"List of Movies");
+        Menu movieCheckout = new Menu(5,"checkout movie");
         menulist.add(quitMenu.toString());
         menulist.add(listOfBooks.toString());
         menulist.add(checkoutMenu.toString());
         menulist.add(returnMenu.toString());
         menulist.add(movieMenu.toString());
+        menulist.add(movieCheckout.toString());
         return menulist;
     }
 
@@ -58,13 +60,13 @@ public class BibliotecaService {
                 handleMenu(handleSelect());
                 break;
             case 2:
-                System.out.println("please input book title:");
+                System.out.println("please input book's title:");
                 System.out.println(handleCheckout(handleInputString()));
                 printMenuList();
                 handleMenu(handleSelect());
                 break;
             case 3:
-                System.out.println("please input book title:");
+                System.out.println("please input book's title:");
                 System.out.println(handleReturn(handleInputString()));
                 printMenuList();
                 handleMenu(handleSelect());
@@ -74,6 +76,11 @@ public class BibliotecaService {
                 movieService.showMovies().forEach(System.out::println);
                 printMenuList();
                 handleMenu(handleSelect());
+                break;
+            case 5:
+                System.out.println("please input movie's name:");
+                System.out.println(handleCheckoutMovie(handleInputString()));
+                break;
             default:
                 System.out.println(invalidMenuMessage);
                 printMenuList();
@@ -99,7 +106,11 @@ public class BibliotecaService {
     }
 
     public String handleCheckoutMovie(String s){
-        return "";
+        if(movieService.checkout(s)){
+            return successfulMovieCheckout;
+        } else {
+            return unsuccessfulMovieCheckout;
+        }
     }
 
     public int handleSelect(){
